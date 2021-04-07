@@ -1,6 +1,7 @@
 {
   "name": "federation-demo",
   "main": "gateway.js",
+  "version": "0.0.2",
   "scripts": {
     "start-gateway": "nodemon gateway.js",
     "start-service-accounts": "nodemon services/accounts/index.js",
@@ -8,7 +9,21 @@
     "start-service-products": "nodemon services/products/index.js",
     "start-service-inventory": "nodemon services/inventory/index.js",
     "start-services": "concurrently \"npm:start-service-*\"",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "docker-accounts": "docker image build -f dockerfiles/accounts.dockerfile -t operatotutor/accounts:latest -t operatotutor/accounts:$npm_package_version .",
+    "docker-reviews": "docker image build -f dockerfiles/reviews.dockerfile -t operatotutor/reviews:latest -t operatotutor/reviews:$npm_package_version .",
+    "docker-products": "docker image build -f dockerfiles/products.dockerfile -t operatotutor/products:latest -t operatotutor/products:$npm_package_version .",
+    "docker-inventory": "docker image build -f dockerfiles/inventory.dockerfile -t operatotutor/inventory:latest -t operatotutor/inventory:$npm_package_version .",
+    "docker-gateway": "docker image build -f dockerfiles/gateway.dockerfile -t operatotutor/gateway:latest -t operatotutor/gateway:$npm_package_version .",
+    "docker-hellonode": "docker image build -f dockerfiles/hellonode.dockerfile -t operatotutor/hellonode:latest -t operatotutor/hellonode:$npm_package_version .",
+    "docker": "concurrently \"npm:docker-*\"",
+    "docker:push-accounts": "docker image push operatotutor/accounts:latest && docker image push operatotutor/accounts:$npm_package_version",
+    "docker:push-reviews": "docker image push operatotutor/reviews:latest && docker image push operatotutor/reviews:$npm_package_version",
+    "docker:push-products": "docker image push operatotutor/products:latest && docker image push operatotutor/products:$npm_package_version",
+    "docker:push-inventory": "docker image push operatotutor/inventory:latest && docker image push operatotutor/inventory:$npm_package_version",
+    "docker:push-gateway": "docker image push operatotutor/gateway:latest && docker image push operatotutor/gateway:$npm_package_version",
+    "docker:push-hellonode": "docker image push operatotutor/hellonode:latest && docker image push operatotutor/hellonode:$npm_package_version",
+    "docker:push": "concurrently \"npm:docker:push-*\""
   },
   "devDependencies": {
     "lerna": "latest",

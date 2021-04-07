@@ -1,8 +1,8 @@
-FROM node:latest
+FROM node:14
 
 RUN mkdir accounts
 COPY package.json ./package.json
-COPY lerna.json ./lerna.json
+# COPY lerna.json ./lerna.json
 COPY services/accounts ./services/accounts
 RUN npm i
 

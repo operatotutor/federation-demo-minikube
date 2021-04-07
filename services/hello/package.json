@@ -1,0 +1,13 @@
+{
+  "name": "hello_node",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "Klaud <klaud@ai-doop.com>",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
